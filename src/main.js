@@ -29,9 +29,15 @@ getCss.onclick = () => {
 }
 
 // 请求js
-
 getJs.onclick = () => {
     const request = new XMLHttpRequest()
     request.open('get', '/index.js')
-    request.onreadystatechange
+    request.onreadystatechange = () => {
+        if (request.readyState === 4 && request.status === 200) {
+            let script = document.createElement('script')
+            script.textContent = request.response
+            document.body.appendChild(script)
+        }
+    }
+    request.send()
 }
