@@ -23,15 +23,21 @@ var server = http.createServer(function (request, response) {
 
     console.log('有小可爱访问服务器。路径（带查询参数）为：' + pathWithQuery)
 
-    if (path === '/') {
+    if (path === '/index.html') {
         response.statusCode = 200
         response.setHeader('Content-Type', 'text/html;charset=utf-8')
-        response.write(`我是根路径`)
+        let string = fs.readFileSync('src/index.html')
+        response.write(string)
         response.end()
-    } else if (path === '/hello') {
+    } else if (path === '/main.js') {
+        response.statusCode = 200
+        response.setHeader('Content-Type', 'text/javascript;charset=utf-8')
+        response.write(fs.readFileSync('src/main.js'))
+        response.end()
+    } else if (path === '/style.css') {
         response.statusCode = 200
         response.setHeader('Content-Type', 'text/css;charset=utf-8')
-        response.write(`body{color: red;}`)
+        response.write(fs.readFileSync('src/style.css'))
         response.end()
     } else {
         response.statusCode = 404
