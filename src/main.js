@@ -55,3 +55,17 @@ getHtml.onclick = () => {
     }
     request.send()
 }
+
+// 请求Xml
+getXml.onclick = () => {
+    const request = new XMLHttpRequest()
+    request.open('get', '/add2.xml')
+    request.onreadystatechange = () => {
+        if (request.readyState === 4 && request.status === 200) {
+            let xml = request.responseXML
+            let text = xml.getElementsByTagName('warning')[0].textContent
+            console.log(text.trim()) // trim() 去除多余的空字符
+        }
+    }
+    request.send()
+}
