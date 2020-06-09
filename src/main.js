@@ -41,3 +41,17 @@ getJs.onclick = () => {
     }
     request.send()
 }
+
+// 请求html
+getHtml.onclick = () => {
+    const request = new XMLHttpRequest()
+    request.open('get', '/add.html')
+    request.onreadystatechange = () => {
+        if (request.readyState === 4 && request.status === 200) {
+            let div = document.createElement('div')
+            div.innerHTML = request.response
+            getHtml.appendChild(div)
+        }
+    }
+    request.send()
+}
