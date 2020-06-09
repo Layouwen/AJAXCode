@@ -69,3 +69,17 @@ getXml.onclick = () => {
     }
     request.send()
 }
+
+// 请求json
+getJson.onclick = () => {
+    const request = new XMLHttpRequest()
+    request.open('get', '/test.json')
+    request.onreadystatechange = () => {
+        if (request.readyState === 4 && request.status === 200) {
+            let obj = JSON.parse(request.response)
+            console.log(obj)
+            console.log(JSON.stringify(obj))
+        }
+    }
+    request.send()
+}

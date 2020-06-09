@@ -54,6 +54,11 @@ var server = http.createServer(function (request, response) {
         response.setHeader('Content-Type', 'text/xml;charset=utf-8')
         response.write(fs.readFileSync('src/add2.xml'))
         response.end()
+    } else if (path === '/test.json') {
+        response.statusCode = 200
+        response.setHeader('Content-Type', 'text/json;charset=utf-8')
+        response.write(fs.readFileSync('src/test.json'))
+        response.end()
     } else {
         response.statusCode = 404
         response.setHeader('Content-Type', 'text/html;charset=utf-8')
