@@ -9,7 +9,7 @@ if (!port) {
 }
 
 var server = http.createServer(function (request, response) {
-  var parsedUrl = url.parse(request.url, true)
+  var parsedUrl = url.parse(request.url, true) // 格式化参数
   var pathWithQuery = request.url
   var queryString = ''
   if (pathWithQuery.indexOf('?') >= 0) {
